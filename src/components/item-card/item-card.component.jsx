@@ -10,7 +10,7 @@ function ItemCard({ name, imageUrl, price }) {
       ></div>
       <section className="item-card-info">
         <p className="info-name">{name.toUpperCase()}</p>
-        <p className="info-price">{price}</p>
+        <p className="info-price">{`$${price}`}</p>
       </section>
     </div>
   );
