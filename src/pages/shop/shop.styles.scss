@@ -1,0 +1,10 @@
+.shop {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 40px 40px;
+
+  & > .title {
+    margin-bottom: 1rem;
+  }
+}

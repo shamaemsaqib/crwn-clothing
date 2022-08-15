@@ -1,4 +1,4 @@
-.section-item {
+.section-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,18 +16,18 @@
   &:hover {
     cursor: pointer;
 
-    & .section-item-img {
+    & .section-card-img {
       transform: scale(1.1);
       transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
-    & .section-item-content {
+    & .section-card-content {
       opacity: 0.9;
       transition: opacity 0.3s linear;
     }
   }
 
-  & .section-item-img {
+  & .section-card-img {
     width: 100%;
     height: 100%;
     background-position: center;
@@ -36,7 +36,7 @@
     border: 1px solid #000;
   }
 
-  & .section-item-content {
+  & .section-card-content {
     position: absolute;
     background-color: #eee;
     opacity: 0.8;

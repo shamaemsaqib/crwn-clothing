@@ -1,14 +1,14 @@
 import React from "react";
-import "./section-item.styles.scss";
+import "./section-card.styles.scss";
 
-function SectionItem({ title, imageUrl, size }) {
+function SectionCard({ title, imageUrl, size }) {
   return (
-    <div className={`section-item ${size}`}>
+    <div className={`section-card ${size}`}>
       <div
-        className="section-item-img"
+        className="section-card-img"
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
-      <section className="section-item-content">
+      <section className="section-card-content">
         <h2 className="content-title">{title.toUpperCase()}</h2>
         <p className="content-subtitle">{"shop now".toUpperCase()}</p>
       </section>
@@ -16,4 +16,4 @@ function SectionItem({ title, imageUrl, size }) {
   );
 }
 
-export default SectionItem;
+export default SectionCard;

@@ -1,0 +1,40 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 22%;
+  height: 350px;
+  overflow: hidden;
+  gap: 0.3rem;
+  border-radius: 0.3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & .item-card-img {
+    width: 100%;
+    height: 95%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0.3rem;
+    border: 1px solid #000;
+  }
+
+  & .item-card-info {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & .info-name,
+    & .info-price {
+      font-size: 0.9rem;
+    }
+
+    & .info-price::before {
+      content: "$";
+    }
+  }
+}
