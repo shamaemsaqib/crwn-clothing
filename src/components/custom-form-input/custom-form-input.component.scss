@@ -1,0 +1,46 @@
+@mixin focus {
+  top: -1.1rem;
+  color: #000;
+  font-size: 0.8;
+}
+
+.form-input-container {
+  color: grey;
+  position: relative;
+  width: 100%;
+
+  & .label {
+    position: absolute;
+    letter-spacing: 1px;
+    top: 0.7rem;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    padding-left: 0.4rem;
+    cursor: text;
+    transition: all 0.4s ease 0s;
+
+    &.focus {
+      @include focus();
+    }
+  }
+
+  & input {
+    border: none;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(90, 90, 90, 0.7);
+    font-size: 1.1rem;
+    padding: 0.6rem 0.4rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: rgb(85, 85, 85);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .label {
+      @include focus();
+    }
+  }
+}

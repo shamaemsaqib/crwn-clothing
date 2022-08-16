@@ -19,8 +19,8 @@ function Header() {
         <Link to={"/contact"} className="header-link">
           <p>contact</p>
         </Link>
-        <Link to={"/register"} className="header-link">
-          <p>login / register</p>
+        <Link to={"/signin"} className="header-link">
+          <p>Sign in</p>
         </Link>
       </div>
     </div>
