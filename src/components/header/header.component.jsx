@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import userEvent from "@testing-library/user-event";
+import { auth } from "../../data/firebase.utils";
 
-function Header() {
+function Header({ currentUser }) {
+  console.log(currentUser);
   return (
     <div className="header">
       <Link to={"/"} className="logo-container">
@@ -19,9 +22,18 @@ function Header() {
         <Link to={"/contact"} className="header-link">
           <p>contact</p>
         </Link>
-        <Link to={"/signin"} className="header-link">
-          <p>Sign in</p>
-        </Link>
+        {currentUser ? (
+          <div className="header-link signed-in">
+            <p className="user-name">{currentUser.displayName}</p>
+            <button className="sign-out-btn" onClick={() => auth.signOut()}>
+              sign out
+            </button>
+          </div>
+        ) : (
+          <Link to={"/sign-in"} className="header-link">
+            <p>sign in</p>
+          </Link>
+        )}
       </div>
     </div>
   );

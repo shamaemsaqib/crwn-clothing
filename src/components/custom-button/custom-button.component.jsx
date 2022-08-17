@@ -1,9 +1,12 @@
 import React from "react";
 import "./custom-button.styles.scss";
 
-function CustomButton({ children, type }) {
+function CustomButton({ children, isGoogleButton, ...otherBtnProps }) {
   return (
-    <button className="custom-btn" type={type}>
+    <button
+      className={`${isGoogleButton ? "google-btn" : ""} custom-btn`}
+      {...otherBtnProps}
+    >
       {children.toUpperCase()}
     </button>
   );
