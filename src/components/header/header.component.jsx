@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import userEvent from "@testing-library/user-event";
 import { auth } from "../../data/firebase.utils";
 
 function Header({ currentUser }) {
