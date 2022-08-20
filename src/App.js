@@ -4,8 +4,9 @@ import Header from "./components/header/header.component";
 import Register from "./pages/register/register.component";
 import SectionsList from "./pages/sections-list/sections-list.component";
 import Shop from "./pages/shop/shop.component";
-import { auth } from "./data/firebase.utils";
+import { addProfileDocumentToFirestore, auth } from "./data/firebase.utils";
 import React from "react";
+import { onSnapshot } from "firebase/firestore";
 
 class App extends React.Component {
   constructor() {
@@ -19,10 +20,20 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({
-        userLogged: user,
-      });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userDocRef = await addProfileDocumentToFirestore(user);
+
+        onSnapshot(userDocRef, (snapShot) => {
+          this.setState({
+            userLogged: { ...snapShot.data() },
+          });
+        });
+      } else {
+        this.setState({
+          userLogged: user,
+        });
+      }
     });
   }
 
