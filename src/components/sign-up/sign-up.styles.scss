@@ -1,0 +1,25 @@
+.sign-up-container {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  & .sign-up-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  & .sign-up-subtitle {
+    font-size: 0.9rem;
+    font-weight: 100;
+    color: grey;
+  }
+
+  & form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+}
