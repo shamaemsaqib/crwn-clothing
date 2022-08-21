@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { onSnapshot } from "firebase/firestore";
 import { connect } from "react-redux/es/exports";
 
@@ -44,15 +44,25 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<SectionsList />} />
           <Route exact path="/shop" element={<Shop />} />
-          <Route exact path="/sign-in" element={<Register />} />
+          <Route
+            exact
+            path="/sign-in"
+            element={
+              this.props.currentUser ? <Navigate to="/" /> : <Register />
+            }
+          />
         </Routes>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
