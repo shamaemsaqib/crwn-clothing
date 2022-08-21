@@ -4,7 +4,7 @@ import Header from "./components/header/header.component";
 import Register from "./pages/register/register.component";
 import SectionsList from "./pages/sections-list/sections-list.component";
 import Shop from "./pages/shop/shop.component";
-import { addProfileDocumentToFirestore, auth } from "./data/firebase.utils";
+import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
 import React from "react";
 import { onSnapshot } from "firebase/firestore";
 

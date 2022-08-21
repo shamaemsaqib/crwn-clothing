@@ -1,6 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { Component } from "react";
-import { addProfileDocumentToFirestore, auth } from "../../data/firebase.utils";
+import {
+  addProfileDocumentToFirestore,
+  auth,
+} from "../../firebase/firebase.utils";
 import CustomButton from "../custom-button/custom-button.component";
 import CustomFormInput from "../custom-form-input/custom-form-input.component";
 import "./sign-up.styles.scss";
