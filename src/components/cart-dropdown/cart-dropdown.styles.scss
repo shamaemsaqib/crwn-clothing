@@ -1,0 +1,26 @@
+.cart-dropdown-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(50px);
+  margin-top: 0.5rem;
+  border: 1px solid black;
+  width: 250px;
+  height: 350px;
+  z-index: 1;
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 3px;
+
+  .cart-items-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    // width: calc(250px - 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

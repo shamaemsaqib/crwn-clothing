@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { sections } from "../../data/utilities.js";
-import SectionCard from "../section-card/section-card.component.jsx";
+
 import "./directory.styles.scss";
+
+import { sections } from "../../utilities/utilities.js";
+import SectionCard from "../section-card/section-card.component.jsx";
 
 export class Directory extends Component {
   constructor() {

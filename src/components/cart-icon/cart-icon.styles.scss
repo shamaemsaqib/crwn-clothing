@@ -1,0 +1,24 @@
+.cart-icon-container {
+  position: relative;
+  display: flex;
+  justify-items: center;
+  width: 1.6rem;
+
+  .icon {
+    color: inherit;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .quantity {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 50;
+    left: 50%;
+    transform: translate(-50%, 40%);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

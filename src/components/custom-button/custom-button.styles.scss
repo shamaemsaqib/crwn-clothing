@@ -21,4 +21,15 @@
       color: #eee;
     }
   }
+
+  &.inverted {
+    color: black;
+    background-color: #fff;
+
+    &:hover {
+      cursor: pointer;
+      background-color: black;
+      color: #eee;
+    }
+  }
 }

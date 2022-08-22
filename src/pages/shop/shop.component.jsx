@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SectionsPreview from "../../components/sections-preview/sections-preview.component";
-import { shopData } from "../../data/utilities";
+import { shopData } from "../../utilities/utilities";
 import "./shop.styles.scss";
 
 export class Shop extends Component {
