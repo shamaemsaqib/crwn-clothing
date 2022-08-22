@@ -11,7 +11,7 @@ function CartDropdown({ items }) {
     <div className="cart-dropdown-container">
       <div className="cart-items-container">
         {items.map((item) => {
-          return <CartItem item={item} />;
+          return <CartItem key={item.id} item={item} />;
         })}
       </div>
       <CustomButton type="button">checkout</CustomButton>
