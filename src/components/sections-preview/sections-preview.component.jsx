@@ -9,8 +9,8 @@ function SectionsPreview({ title, items }) {
       <div className="section-items-container">
         {items
           .filter((item, idx) => idx < 4)
-          .map(({ id, ...otherItemProps }) => {
-            return <ItemCard key={id} {...otherItemProps} />;
+          .map((item) => {
+            return <ItemCard key={item.id} item={item} />;
           })}
       </div>
     </div>
