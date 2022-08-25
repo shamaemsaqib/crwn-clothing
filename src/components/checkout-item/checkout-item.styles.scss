@@ -36,6 +36,8 @@
     .arrow {
       vertical-align: middle;
       font-size: 1.1rem;
+      border: none;
+      background-color: inherit;
 
       &:hover {
         cursor: pointer;

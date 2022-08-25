@@ -1,4 +1,4 @@
-export const addItems = (otherCartItems, itemToAdd) => {
+export const addItem = (otherCartItems, itemToAdd) => {
   const sameItem = otherCartItems.find((item) => item.id === itemToAdd.id);
 
   if (sameItem) {
@@ -9,3 +9,17 @@ export const addItems = (otherCartItems, itemToAdd) => {
     return [...otherCartItems, { ...itemToAdd, quantity: 1 }];
   }
 };
+
+export const removeItem = (otherCartItems, itemToRemove) => {
+  if (itemToRemove.quantity === 1) {
+    return otherCartItems.filter((item) => item.id !== itemToRemove.id);
+  } else
+    return otherCartItems.map((item) =>
+      item.id === itemToRemove.id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+};
+
+export const clearItem = (otherCartItems, itemToClear) =>
+  otherCartItems.filter((item) => item.id !== itemToClear.id);
