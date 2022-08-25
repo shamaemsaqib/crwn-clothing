@@ -13,6 +13,7 @@ import Shop from "./pages/shop/shop.component";
 import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import Checkout from "./pages/checkout/checkout.component";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -24,7 +25,6 @@ class App extends React.Component {
         const userDocRef = await addProfileDocumentToFirestore(user);
 
         onSnapshot(userDocRef, (snapShot) => {
-          console.log(snapShot.data());
           setCurrentUser({
             ...snapShot.data(),
           });
@@ -46,6 +46,7 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<SectionsList />} />
           <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/checkout" element={<Checkout />} />
           <Route
             exact
             path="/sign-in"
