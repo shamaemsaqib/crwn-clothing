@@ -1,8 +1,8 @@
 import React from "react";
 import ItemCard from "../item-card/item-card.component";
-import "./sections-preview.styles.scss";
+import "./section-preview.styles.scss";
 
-function SectionsPreview({ title, items }) {
+function SectionPreview({ title, items }) {
   return (
     <div className="sections-preview">
       <h2 className="title">{title.toUpperCase()}</h2>
@@ -17,4 +17,4 @@ function SectionsPreview({ title, items }) {
   );
 }
 
-export default SectionsPreview;
+export default SectionPreview;
