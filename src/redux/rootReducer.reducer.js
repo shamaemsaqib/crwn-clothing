@@ -7,8 +7,6 @@ import { homeReducer } from "./home/homeReducer.reducer";
 import { shopReducer } from "./shop/shopReducer.reducer";
 import userReducer from "./user/userReducer.reducer";
 
-//TODO: move all component state to redux
-//TODO: create a separate component to display all collections in shop page
 //TODO: nest route the shop page to pass category as url param
 //TODO: create a new selector to get category data base off url param
 //TODO: memoize the above selector using lodash.memoize

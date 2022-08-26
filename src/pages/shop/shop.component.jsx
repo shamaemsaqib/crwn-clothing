@@ -1,24 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 
 import "./shop.styles.scss";
 
-import SectionPreview from "../../components/section-preview/section-preview.component";
-import { sectionsSelector } from "../../redux/shop/shop.selectors";
+import SectionPreviewContainer from "../../components/section-preview-container/section-preview-container.component";
 
-export function Shop({ sections }) {
+export function Shop() {
   return (
     <div className="shop">
-      {sections.map(({ id, ...otherSectionProps }) => {
-        return <SectionPreview key={id} {...otherSectionProps} />;
-      })}
+      <SectionPreviewContainer />
     </div>
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  sections: sectionsSelector,
-});
-
-export default connect(mapStateToProps)(Shop);
+export default Shop;
