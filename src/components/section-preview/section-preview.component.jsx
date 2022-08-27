@@ -1,11 +1,18 @@
 import React from "react";
-import ItemCard from "../item-card/item-card.component";
+import { Link } from "react-router-dom";
+
 import "./section-preview.styles.scss";
 
-function SectionPreview({ title, items }) {
+import ItemCard from "../item-card/item-card.component";
+
+function SectionPreview(props) {
+  console.log(props);
+  const { title, items } = props;
   return (
     <div className="sections-preview">
-      <h2 className="title">{title.toUpperCase()}</h2>
+      <Link to={`/shop/${title.toLowerCase()}`}>
+        <h2 className="section-title">{title.toUpperCase()}</h2>
+      </Link>
       <div className="section-items-container">
         {items
           .filter((item, idx) => idx < 4)

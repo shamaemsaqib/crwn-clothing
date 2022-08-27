@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 import "./directory.styles.scss";
 
 import SectionCard from "../section-card/section-card.component.jsx";
-import { sectionsListSelector } from "../../redux/home/home.selectors";
+import { selectSectionsList } from "../../redux/home/home.selectors";
 
 export function Directory({ sectionsList }) {
   return (
@@ -20,7 +20,7 @@ export function Directory({ sectionsList }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  sectionsList: sectionsListSelector,
+  sectionsList: selectSectionsList,
 });
 
 export default connect(mapStateToProps)(Directory);

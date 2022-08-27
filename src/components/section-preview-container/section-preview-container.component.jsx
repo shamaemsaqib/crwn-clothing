@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { sectionsSelector } from "../../redux/shop/shop.selectors";
-import SectionPreview from "../section-preview/section-preview.component";
 
 import "./section-preview-container.styles.scss";
+
+import { selectSections } from "../../redux/shop/shop.selectors";
+import SectionPreview from "../section-preview/section-preview.component";
 
 function SectionPreviewContainer({ sections }) {
   return (
@@ -17,7 +18,7 @@ function SectionPreviewContainer({ sections }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  sections: sectionsSelector,
+  sections: selectSections,
 });
 
 export default connect(mapStateToProps)(SectionPreviewContainer);

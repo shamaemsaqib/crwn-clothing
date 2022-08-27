@@ -21,7 +21,7 @@ export const sections = [
     id: 4,
   },
   {
-    title: "mens",
+    title: "men",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
     size: "large",
     id: 5,
@@ -184,8 +184,8 @@ export const shopData = [
   },
   {
     id: 4,
-    title: "Womens",
-    routeName: "womens",
+    title: "Women",
+    routeName: "women",
     items: [
       {
         id: 23,
@@ -233,8 +233,8 @@ export const shopData = [
   },
   {
     id: 5,
-    title: "Mens",
-    routeName: "mens",
+    title: "Men",
+    routeName: "men",
     items: [
       {
         id: 30,

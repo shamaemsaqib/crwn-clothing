@@ -1,13 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import "./shop.styles.scss";
-
-import SectionPreviewContainer from "../../components/section-preview-container/section-preview-container.component";
 
 export function Shop() {
   return (
     <div className="shop">
-      <SectionPreviewContainer />
+      <Outlet />
     </div>
   );
 }

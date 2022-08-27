@@ -1,0 +1,23 @@
+.section-page-container {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  .section-title {
+    text-transform: uppercase;
+  }
+
+  .section-page-items-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+
+    .item-card {
+      width: auto;
+    }
+  }
+}
