@@ -1,5 +1,4 @@
 import React from "react";
-import { useMatch } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -7,6 +6,7 @@ import "./section.styles.scss";
 
 import { selectSection } from "../../redux/shop/shop.selectors";
 import ItemCard from "../../components/item-card/item-card.component";
+import withRouter from "../../components/withRouterHOC/withRouterHOC.component";
 
 function Section({ section: { title, items } }) {
   return (
@@ -21,18 +21,16 @@ function Section({ section: { title, items } }) {
   );
 }
 
-function withRouter(Component) {
-  function SectionHOC(props) {
-    const match = useMatch("/shop/:sectionID");
-    return <Component match={match} {...props} />;
+const mapStateToProps = (
+  state,
+  {
+    match: {
+      params: { sectionID },
+    },
   }
-
-  return SectionHOC;
-}
-
-const mapStateToProps = (state, { match }) => {
+) => {
   return {
-    section: selectSection(match.params.sectionID)(state),
+    section: selectSection(sectionID)(state),
   };
 };
 
