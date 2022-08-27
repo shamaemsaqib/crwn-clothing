@@ -4,7 +4,7 @@ import { createStructuredSelector } from "reselect";
 
 import "./section-preview-container.styles.scss";
 
-import { selectSections } from "../../redux/shop/shop.selectors";
+import { selectSectionsForSectionsPreview } from "../../redux/shop/shop.selectors";
 import SectionPreview from "../section-preview/section-preview.component";
 
 function SectionPreviewContainer({ sections }) {
@@ -18,7 +18,7 @@ function SectionPreviewContainer({ sections }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  sections: selectSections,
+  sections: selectSectionsForSectionsPreview,
 });
 
 export default connect(mapStateToProps)(SectionPreviewContainer);

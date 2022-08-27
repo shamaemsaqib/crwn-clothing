@@ -10,10 +10,8 @@ import { selectSectionsList } from "../../redux/home/home.selectors";
 export function Directory({ sectionsList }) {
   return (
     <div className="directory">
-      {sectionsList.map(({ title, imageUrl, id, size }) => {
-        return (
-          <SectionCard key={id} title={title} imageUrl={imageUrl} size={size} />
-        );
+      {sectionsList.map((section) => {
+        return <SectionCard key={section.id} section={section} />;
       })}
     </div>
   );

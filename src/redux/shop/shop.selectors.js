@@ -7,15 +7,11 @@ export const selectSections = createSelector(
   (shop) => shop.sections
 );
 
-const MAP_SECTION_ID = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  women: 4,
-  men: 5,
-};
+//Sections is an object so converting into an array to map over it
+export const selectSectionsForSectionsPreview = createSelector(
+  [selectSections],
+  (sections) => Object.keys(sections).map((section) => sections[section])
+);
 
 export const selectSection = (sectionID) =>
-  createSelector([selectSections], (sections) =>
-    sections.find((section) => section.id === MAP_SECTION_ID[sectionID])
-  );
+  createSelector([selectSections], (sections) => sections[sectionID]);
