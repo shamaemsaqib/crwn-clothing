@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   place-items: center;
+  gap: 3rem;
 
   .checkout-items-section {
     width: 100%;
@@ -42,5 +43,17 @@
       font-weight: normal;
       font-size: 2rem;
     }
+  }
+
+  .test-card-msg {
+    color: red;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  button {
+    align-self: flex-end;
   }
 }
