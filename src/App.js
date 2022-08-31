@@ -16,7 +16,6 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 import Checkout from "./pages/checkout/checkout.component";
 import SectionPreviewContainer from "./components/section-preview-container/section-preview-container.component";
 import Section from "./pages/section/section.component";
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -35,6 +34,7 @@ class App extends React.Component {
         setCurrentUser(user);
       }
     });
+    // addShopToFireStore("sections", sectionsForPreview);
   }
 
   componentWillUnmount() {

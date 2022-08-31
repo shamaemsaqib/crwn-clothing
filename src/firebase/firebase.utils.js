@@ -1,7 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  writeBatch,
+} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,7 +34,9 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-const firestore = getFirestore(firebaseApp);
+export const signInWithGoogle = () => signInWithPopup(auth, provider);
+
+export const firestore = getFirestore(firebaseApp);
 
 export const addProfileDocumentToFirestore = async (authUser, otherData) => {
   if (!authUser) return;
@@ -55,4 +64,37 @@ export const addProfileDocumentToFirestore = async (authUser, otherData) => {
   return userDocRef;
 };
 
-export const signInWithGoogle = () => signInWithPopup(auth, provider);
+export const addShopToFireStore = async (collectionKey, sectionsToAdd) => {
+  console.log(sectionsToAdd);
+
+  const collectionRef = collection(firestore, collectionKey);
+  console.log(collectionRef);
+
+  const batch = writeBatch(firestore);
+
+  sectionsToAdd.forEach((section) => {
+    const { title, items } = section;
+    console.log(section);
+    const newDocRef = doc(collectionRef);
+    batch.set(newDocRef, { title: title, items: items });
+  });
+
+  return await batch.commit();
+};
+
+export const convertQuerySnapShotToMap = (snapShot) => {
+  const sectionsMap = snapShot.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      title,
+      items,
+      id: doc.id,
+    };
+  });
+
+  //Converting array to map(object)
+  return sectionsMap.reduce((accumulator, section) => {
+    accumulator[section.title.toLowerCase()] = section;
+    return accumulator;
+  }, {});
+};

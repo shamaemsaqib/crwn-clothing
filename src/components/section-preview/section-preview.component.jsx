@@ -5,12 +5,12 @@ import "./section-preview.styles.scss";
 import ItemCard from "../item-card/item-card.component";
 import withRouter from "../withRouterHOC/withRouterHOC.component";
 
-function SectionPreview({ title, items, navigate }) {
+function SectionPreview({ title, items, routeName, navigate }) {
   return (
     <div className="sections-preview">
       <h2
         className="section-title"
-        onClick={() => navigate(`/shop/${title.toLowerCase()}`)}
+        onClick={() => navigate(`/shop/${routeName}`)}
       >
         {title.toUpperCase()}
       </h2>
