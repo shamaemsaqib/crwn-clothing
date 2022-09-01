@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import "./section-preview-container.styles.scss";
+import "./section-preview-wrapper.styles.scss";
 
 import { selectSectionsForSectionsPreview } from "../../redux/shop/shop.selectors";
-import SectionPreview from "../section-preview/section-preview.component";
+import SectionPreview from "../../components/section-preview/section-preview.component";
 
 function SectionPreviewContainer({ sections }) {
   return (

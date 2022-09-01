@@ -10,7 +10,7 @@ function SectionPreview({ title, items, routeName, navigate }) {
     <div className="sections-preview">
       <h2
         className="section-title"
-        onClick={() => navigate(`/shop/${routeName}`)}
+        onClick={() => navigate(`/shop/${title.toLowerCase()}`)}
       >
         {title.toUpperCase()}
       </h2>

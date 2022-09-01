@@ -14,7 +14,7 @@ import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import Checkout from "./pages/checkout/checkout.component";
-import SectionPreviewContainer from "./components/section-preview-container/section-preview-container.component";
+import SectionPreviewWrapper from "./pages/section-preview-wrapper/section-preview-wrapper.component";
 import Section from "./pages/section/section.component";
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -48,7 +48,7 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<SectionsList />} />
           <Route exact path="/shop" element={<Shop />}>
-            <Route exact path="/shop" element={<SectionPreviewContainer />} />
+            <Route exact path="/shop" element={<SectionPreviewWrapper />} />
             <Route exact path="/shop/:sectionID" element={<Section />} />
           </Route>
           <Route exact path="/checkout" element={<Checkout />} />
