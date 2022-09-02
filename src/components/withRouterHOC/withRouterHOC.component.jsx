@@ -1,6 +1,7 @@
+import React from "react";
 import { useMatch, useNavigate } from "react-router-dom";
 
-function withRouter(Component) {
+function WithRouter(Component) {
   function ComponentWithRouterProps(props) {
     const match = useMatch("shop/:sectionID");
     const navigate = useNavigate();
@@ -11,4 +12,4 @@ function withRouter(Component) {
   return ComponentWithRouterProps;
 }
 
-export default withRouter;
+export default WithRouter;

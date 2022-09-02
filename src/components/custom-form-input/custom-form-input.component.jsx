@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./custom-form-input.component.scss";
 
 function CustomFormInput({ handleChange, label, id, ...otherInputProps }) {

@@ -4,12 +4,13 @@ import { createStructuredSelector } from "reselect";
 
 import "./checkout.styles.scss";
 
+import Stripe from "../../components/stripe/stripe.component";
+import CheckoutItemContainer from "../../components/checkout-item/checkout-item.container";
+
 import {
   selectCartItems,
   selectCheckoutTotal,
 } from "../../redux/cart/cart.selectors";
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import Stripe from "../../components/stripe/stripe.component";
 
 function Checkout({ cartItems, checkoutTotal }) {
   return (
@@ -24,7 +25,7 @@ function Checkout({ cartItems, checkoutTotal }) {
         </div>
         <div className="checkout-items-container">
           {cartItems.map((item) => (
-            <CheckoutItem key={item.id} item={item} />
+            <CheckoutItemContainer key={item.id} item={item} />
           ))}
         </div>
         <div className="checkout-total-container">
@@ -45,6 +46,4 @@ const mapStateToProps = createStructuredSelector({
   checkoutTotal: selectCheckoutTotal,
 });
 
-const mapDispatchToProps = (dispatch) => {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import "./item-card.styles.scss";
 
 import CustomButton from "../custom-button/custom-button.component";
+
 import { addItemToCart } from "../../redux/cart/cart.actions";
 
 function ItemCard({ item, addItemToCart }) {

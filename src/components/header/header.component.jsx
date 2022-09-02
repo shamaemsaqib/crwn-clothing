@@ -6,9 +6,11 @@ import { createStructuredSelector } from "reselect";
 import "./header.styles.scss";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { auth } from "../../firebase/firebase.utils";
-import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CartIconContainer from "../cart-icon/cart-icon.container";
+
+import { auth } from "../../firebase/firebase.utils";
+
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartDropdown } from "../../redux/cart/cart.selectors";
 
@@ -40,7 +42,7 @@ function Header({ currentUser, cartDropdownHidden }) {
             <p>sign in</p>
           </Link>
         )}
-        <CartIcon />
+        <CartIconContainer />
       </div>
       {!cartDropdownHidden ? <CartDropdown /> : null}
     </div>

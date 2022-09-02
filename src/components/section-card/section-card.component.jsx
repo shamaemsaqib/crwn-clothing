@@ -1,5 +1,6 @@
 import React from "react";
-import withRouter from "../withRouterHOC/withRouterHOC.component";
+
+import WithRouter from "../withRouterHOC/withRouterHOC.component";
 
 import "./section-card.styles.scss";
 
@@ -22,4 +23,4 @@ function SectionCard({ section, navigate }) {
   );
 }
 
-export default withRouter(SectionCard, "/");
+export default WithRouter(SectionCard);

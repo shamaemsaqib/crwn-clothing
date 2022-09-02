@@ -1,17 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
 
 import "./section.styles.scss";
 
-import {
-  selectIsSectionsLoaded,
-  selectSection,
-} from "../../redux/shop/shop.selectors";
 import ItemCard from "../../components/item-card/item-card.component";
-import withRouter from "../../components/withRouterHOC/withRouterHOC.component";
-import WithSpinnerHOC from "../../components/withSpinnerHOC/withSpinnerHOC.component";
-
 class Section extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -35,22 +26,4 @@ class Section extends React.Component {
   }
 }
 
-const mapStateToProps = (
-  state,
-  {
-    match: {
-      params: { sectionID },
-    },
-  }
-) => {
-  return {
-    section: selectSection(sectionID)(state),
-    isLoading: !selectIsSectionsLoaded(state),
-  };
-};
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps),
-  WithSpinnerHOC
-)(Section);
+export default Section;

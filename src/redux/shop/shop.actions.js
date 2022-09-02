@@ -1,8 +1,10 @@
 import { collection, getDocs, query } from "firebase/firestore";
+
 import {
   convertQuerySnapShotToMap,
   firestore,
 } from "../../firebase/firebase.utils";
+
 import { SHOP_ACTION_TYPES } from "./shop-action-types.actions";
 
 export const fetchSectionsFromFirestoreStart = () => ({

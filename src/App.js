@@ -10,12 +10,15 @@ import Header from "./components/header/header.component";
 import Register from "./pages/register/register.component";
 import SectionsList from "./pages/sections-list/sections-list.component";
 import Shop from "./pages/shop/shop.component";
+import Checkout from "./pages/checkout/checkout.component";
+import SectionContainer from "./pages/section/section.container";
+import SectionPreviewWrapperContainer from "./pages/section-preview-wrapper/section-preview-wrapper.container";
+
 import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
+
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import Checkout from "./pages/checkout/checkout.component";
-import SectionPreviewWrapper from "./pages/section-preview-wrapper/section-preview-wrapper.component";
-import Section from "./pages/section/section.component";
+
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -48,8 +51,16 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<SectionsList />} />
           <Route exact path="/shop" element={<Shop />}>
-            <Route exact path="/shop" element={<SectionPreviewWrapper />} />
-            <Route exact path="/shop/:sectionID" element={<Section />} />
+            <Route
+              exact
+              path="/shop"
+              element={<SectionPreviewWrapperContainer />}
+            />
+            <Route
+              exact
+              path="/shop/:sectionID"
+              element={<SectionContainer />}
+            />
           </Route>
           <Route exact path="/checkout" element={<Checkout />} />
           <Route

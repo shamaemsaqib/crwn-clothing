@@ -1,8 +1,9 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import { stripeAPIKey, svgUrl } from "../../utilities/stripe.utilities";
 
 import "./stripe.styles.scss";
+
+import { stripeAPIKey, svgUrl } from "../../utilities/stripe.utilities";
 
 function Stripe({ totalPrice }) {
   const priceInCents = totalPrice * 100;

@@ -5,6 +5,7 @@ import { createStructuredSelector } from "reselect";
 import "./directory.styles.scss";
 
 import SectionCard from "../section-card/section-card.component.jsx";
+
 import { selectSectionsList } from "../../redux/home/home.selectors";
 
 export function Directory({ sectionsList }) {
