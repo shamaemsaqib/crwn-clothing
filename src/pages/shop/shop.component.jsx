@@ -1,24 +1,14 @@
-import { collection, getDocs, query } from "firebase/firestore";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./shop.styles.scss";
 
-import {
-  convertQuerySnapShotToMap,
-  firestore,
-} from "../../firebase/firebase.utils";
-import { updateShopWithFirestoreData } from "../../redux/shop/shop.actions";
+import { fetchSectionsFromFirestoreAsync } from "../../redux/shop/shop.actions";
 class Shop extends React.Component {
   componentDidMount() {
-    const { updateShopWithFirestoreData } = this.props;
-    const sectionsColRef = collection(firestore, "sections");
-
-    getDocs(query(sectionsColRef)).then((snapShot) => {
-      const sectionsMap = convertQuerySnapShotToMap(snapShot);
-      updateShopWithFirestoreData(sectionsMap);
-    });
+    const { fetchSectionsFromFirestoreAsync } = this.props;
+    fetchSectionsFromFirestoreAsync();
   }
 
   render() {
@@ -31,8 +21,8 @@ class Shop extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  updateShopWithFirestoreData: (sections) =>
-    dispatch(updateShopWithFirestoreData(sections)),
+  fetchSectionsFromFirestoreAsync: () =>
+    dispatch(fetchSectionsFromFirestoreAsync()),
 });
 
 export default connect(null, mapDispatchToProps)(Shop);

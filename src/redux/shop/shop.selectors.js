@@ -23,3 +23,8 @@ export const selectIsSectionsLoaded = createSelector(
   [selectShop],
   (shop) => !!shop.sections
 );
+
+export const selectIsFetching = createSelector(
+  [selectShop],
+  (shop) => shop.isFetching
+);

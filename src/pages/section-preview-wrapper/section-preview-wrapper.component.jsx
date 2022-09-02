@@ -5,7 +5,10 @@ import { createStructuredSelector } from "reselect";
 
 import "./section-preview-wrapper.styles.scss";
 
-import { selectSectionsForSectionsPreview } from "../../redux/shop/shop.selectors";
+import {
+  selectIsFetching,
+  selectSectionsForSectionsPreview,
+} from "../../redux/shop/shop.selectors";
 import SectionPreview from "../../components/section-preview/section-preview.component";
 import WithSpinnerHOC from "../../components/withSpinnerHOC/withSpinnerHOC.component";
 
@@ -21,6 +24,7 @@ function SectionPreviewWrapper({ sections }) {
 
 const mapStateToProps = createStructuredSelector({
   sections: selectSectionsForSectionsPreview,
+  isLoading: selectIsFetching,
 });
 
 export default compose(

@@ -4,7 +4,10 @@ import { compose } from "redux";
 
 import "./section.styles.scss";
 
-import { selectSection } from "../../redux/shop/shop.selectors";
+import {
+  selectIsSectionsLoaded,
+  selectSection,
+} from "../../redux/shop/shop.selectors";
 import ItemCard from "../../components/item-card/item-card.component";
 import withRouter from "../../components/withRouterHOC/withRouterHOC.component";
 import WithSpinnerHOC from "../../components/withSpinnerHOC/withSpinnerHOC.component";
@@ -42,6 +45,7 @@ const mapStateToProps = (
 ) => {
   return {
     section: selectSection(sectionID)(state),
+    isLoading: !selectIsSectionsLoaded(state),
   };
 };
 
