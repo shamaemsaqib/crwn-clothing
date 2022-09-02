@@ -7,6 +7,7 @@ import "./section.styles.scss";
 import { selectSection } from "../../redux/shop/shop.selectors";
 import ItemCard from "../../components/item-card/item-card.component";
 import withRouter from "../../components/withRouterHOC/withRouterHOC.component";
+import WithSpinnerHOC from "../../components/withSpinnerHOC/withSpinnerHOC.component";
 
 class Section extends React.Component {
   componentDidMount() {
@@ -44,4 +45,8 @@ const mapStateToProps = (
   };
 };
 
-export default compose(withRouter, connect(mapStateToProps))(Section);
+export default compose(
+  withRouter,
+  connect(mapStateToProps),
+  WithSpinnerHOC
+)(Section);

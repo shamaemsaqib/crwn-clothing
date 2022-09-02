@@ -1,8 +1,7 @@
-import { shopData } from "../../utilities/utilities";
 import { SHOP_ACTION_TYPES } from "./shop-action-types.actions";
 
 const INITIAL_STATE = {
-  sections: shopData,
+  sections: null,
 };
 
 export const shopReducer = (state = INITIAL_STATE, { type, payload }) => {

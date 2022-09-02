@@ -10,8 +10,16 @@ export const selectSections = createSelector(
 //Sections is an object so converting into an array to map over it
 export const selectSectionsForSectionsPreview = createSelector(
   [selectSections],
-  (sections) => Object.keys(sections).map((section) => sections[section])
+  (sections) =>
+    sections ? Object.keys(sections).map((section) => sections[section]) : []
 );
 
 export const selectSection = (sectionID) =>
-  createSelector([selectSections], (sections) => sections[sectionID]);
+  createSelector([selectSections], (sections) =>
+    sections ? sections[sectionID] : null
+  );
+
+export const selectIsSectionsLoaded = createSelector(
+  [selectShop],
+  (shop) => !!shop.sections
+);
