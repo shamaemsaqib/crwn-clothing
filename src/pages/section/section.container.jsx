@@ -19,7 +19,7 @@ const mapStateToProps = (
   }
 ) => {
   return {
-    section: selectSection(sectionID)(state),
+    section: selectSection(state, sectionID),
     isLoading: !selectIsSectionsLoaded(state),
   };
 };

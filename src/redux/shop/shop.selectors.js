@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { memoize } from "lodash.memoize";
 
 const selectShop = (state) => state.shop;
 
@@ -14,10 +15,15 @@ export const selectSectionsForSectionsPreview = createSelector(
     sections ? Object.keys(sections).map((section) => sections[section]) : []
 );
 
-export const selectSection = (sectionID) =>
-  createSelector([selectSections], (sections) =>
-    sections ? sections[sectionID] : null
-  );
+// export const selectSection = (sectionID) =>
+//   createSelector([selectSections], (sections) =>
+//     sections ? sections[sectionID] : null
+//   );
+
+export const selectSection = createSelector(
+  [selectSections, (_, sectionID) => sectionID],
+  (sections, sectionID) => (sections ? sections[sectionID] : null)
+);
 
 export const selectIsSectionsLoaded = createSelector(
   [selectShop],
