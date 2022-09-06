@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./item-card.styles.scss";
 
@@ -7,8 +7,10 @@ import CustomButton from "../custom-button/custom-button.component";
 
 import { addItemToCart } from "../../redux/cart/cart.actions";
 
-function ItemCard({ item, addItemToCart }) {
+function ItemCard({ item }) {
   const { name, imageUrl, price } = item;
+  const dispatch = useDispatch();
+
   return (
     <div className="item-card">
       <div
@@ -22,7 +24,7 @@ function ItemCard({ item, addItemToCart }) {
       <CustomButton
         type="button"
         inverted={true}
-        onClick={() => addItemToCart(item)}
+        onClick={() => dispatch(addItemToCart(item))}
       >
         add to cart
       </CustomButton>
@@ -30,8 +32,10 @@ function ItemCard({ item, addItemToCart }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addItemToCart: (item) => dispatch(addItemToCart(item)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   addItemToCart: (item) => dispatch(addItemToCart(item)),
+// });
 
-export default connect(null, mapDispatchToProps)(ItemCard);
+// export default connect(null, mapDispatchToProps)(ItemCard);
+
+export default ItemCard;

@@ -1,10 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import "./section-preview-wrapper.styles.scss";
 
 import SectionPreview from "../../components/section-preview/section-preview.component";
 
-function SectionPreviewWrapper({ sections }) {
+import { selectSectionsForSectionsPreview } from "../../redux/shop/shop.selectors";
+
+const SectionPreviewWrapper = () => {
+  const sections = useSelector(selectSectionsForSectionsPreview);
+
   return (
     <div className="section-preview-container">
       {sections.map(({ id, ...otherSectionProps }) => {
@@ -12,6 +17,6 @@ function SectionPreviewWrapper({ sections }) {
       })}
     </div>
   );
-}
+};
 
 export default SectionPreviewWrapper;

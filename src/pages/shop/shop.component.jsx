@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./shop.styles.scss";
 
 import { fetchSectionsFromFirestoreAsync } from "../../redux/shop/shop.actions";
-class Shop extends React.Component {
-  componentDidMount() {
-    const { fetchSectionsFromFirestoreAsync } = this.props;
-    fetchSectionsFromFirestoreAsync();
-  }
+import { selectSections } from "../../redux/shop/shop.selectors";
 
-  render() {
-    return (
-      <div className="shop">
-        <Outlet />
-      </div>
-    );
-  }
-}
+const Shop = () => {
+  const dispatch = useDispatch();
+  const sections = useSelector(selectSections);
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchSectionsFromFirestoreAsync: () =>
-    dispatch(fetchSectionsFromFirestoreAsync()),
-});
+  useEffect(() => {
+    //Routes remounts every time when there is a route change
+    //So to prevent unnecessary fetching on every route change
+    //It will only fetch when there is no sections available
+    if (sections == null) {
+      dispatch(fetchSectionsFromFirestoreAsync());
+    }
+  }, [sections, dispatch]);
 
-export default connect(null, mapDispatchToProps)(Shop);
+  // componentDidMount() {
+  //   const { fetchSectionsFromFirestoreAsync } = this.props;
+  //   fetchSectionsFromFirestoreAsync();
+  // }
+
+  return (
+    <div className="shop">
+      <Outlet />
+    </div>
+  );
+};
+
+// const mapDispatchToProps = (dispatch) => ({
+//   fetchSectionsFromFirestoreAsync: () =>
+//     dispatch(fetchSectionsFromFirestoreAsync()),
+// });
+
+// export default connect(null, mapDispatchToProps)(Shop);
+
+export default Shop;

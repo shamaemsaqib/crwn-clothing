@@ -1,11 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./section-preview.styles.scss";
 
 import ItemCard from "../item-card/item-card.component";
-import withRouter from "../withRouterHOC/withRouterHOC.component";
 
-function SectionPreview({ title, items, routeName, navigate }) {
+function SectionPreview({ title, items }) {
+  const navigate = useNavigate();
+
   return (
     <div className="sections-preview">
       <h2
@@ -25,4 +27,5 @@ function SectionPreview({ title, items, routeName, navigate }) {
   );
 }
 
-export default withRouter(SectionPreview);
+// export default withRouter(SectionPreview);
+export default SectionPreview;

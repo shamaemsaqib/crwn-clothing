@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import "./sign-up.styles.scss";
@@ -10,22 +10,18 @@ import {
   addProfileDocumentToFirestore,
   auth,
 } from "../../firebase/firebase.utils";
-export class SignUp extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    };
-  }
+const SignUp = () => {
+  const [state, setState] = useState({
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const { displayName, email, password, confirmPassword } = state;
 
-  handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -41,77 +37,75 @@ export class SignUp extends Component {
 
       await addProfileDocumentToFirestore(user, { displayName });
 
-      this.setState(() => ({
+      setState({
         displayName: "",
         email: "",
         password: "",
         confirmPassword: "",
-      }));
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState(() => ({ [name]: value }));
+    setState({ ...state, [name]: value });
   };
 
-  render() {
-    return (
-      <div className="sign-up-container">
-        <h2 className="sign-up-title">I do not have a account</h2>
-        <span className="sign-up-subtitle">
-          Sign up with your email and password
-        </span>
-        <form onSubmit={this.handleSubmit}>
-          <CustomFormInput
-            key={2}
-            handleChange={this.handleChange}
-            label="Display Name"
-            type="text"
-            name="displayName"
-            id="up-name"
-            value={this.state.displayName}
-            required
-          />
-          <CustomFormInput
-            key={3}
-            handleChange={this.handleChange}
-            label="Email"
-            type="email"
-            name="email"
-            value={this.state.email}
-            id="up-email"
-            required
-          />
-          <CustomFormInput
-            key={4}
-            handleChange={this.handleChange}
-            label="Password"
-            type="password"
-            name="password"
-            value={this.state.password}
-            id="up-pass"
-            required
-          />
-          <CustomFormInput
-            key={5}
-            handleChange={this.handleChange}
-            label="Confirm Password"
-            type="password"
-            name="confirmPassword"
-            value={this.state.confirmPassword}
-            id="up-cpass"
-            required
-          />
-          <CustomButton type="submit" onClick={this.handleSubmit}>
-            sign up
-          </CustomButton>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="sign-up-container">
+      <h2 className="sign-up-title">I do not have a account</h2>
+      <span className="sign-up-subtitle">
+        Sign up with your email and password
+      </span>
+      <form onSubmit={handleSubmit}>
+        <CustomFormInput
+          key={2}
+          handleChange={handleChange}
+          label="Display Name"
+          type="text"
+          name="displayName"
+          id="up-name"
+          value={displayName}
+          required
+        />
+        <CustomFormInput
+          key={3}
+          handleChange={handleChange}
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          id="up-email"
+          required
+        />
+        <CustomFormInput
+          key={4}
+          handleChange={handleChange}
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          id="up-pass"
+          required
+        />
+        <CustomFormInput
+          key={5}
+          handleChange={handleChange}
+          label="Confirm Password"
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          id="up-cpass"
+          required
+        />
+        <CustomButton type="submit" onClick={handleSubmit}>
+          sign up
+        </CustomButton>
+      </form>
+    </div>
+  );
+};
 
 export default SignUp;

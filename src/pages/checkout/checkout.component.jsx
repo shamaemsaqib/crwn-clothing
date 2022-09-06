@@ -1,18 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { useSelector } from "react-redux";
 
 import "./checkout.styles.scss";
 
 import Stripe from "../../components/stripe/stripe.component";
-import CheckoutItemContainer from "../../components/checkout-item/checkout-item.container";
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 import {
   selectCartItems,
   selectCheckoutTotal,
 } from "../../redux/cart/cart.selectors";
 
-function Checkout({ cartItems, checkoutTotal }) {
+const Checkout = () => {
+  const cartItems = useSelector(selectCartItems);
+  const checkoutTotal = useSelector(selectCheckoutTotal);
+
   return (
     <div className="checkout-container">
       <div className="checkout-items-section">
@@ -25,7 +27,7 @@ function Checkout({ cartItems, checkoutTotal }) {
         </div>
         <div className="checkout-items-container">
           {cartItems.map((item) => (
-            <CheckoutItemContainer key={item.id} item={item} />
+            <CheckoutItem key={item.id} item={item} />
           ))}
         </div>
         <div className="checkout-total-container">
@@ -39,11 +41,14 @@ function Checkout({ cartItems, checkoutTotal }) {
       <Stripe totalPrice={checkoutTotal} />
     </div>
   );
-}
+};
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  checkoutTotal: selectCheckoutTotal,
-});
+// Old HOC Syntax
+// const mapStateToProps = createStructuredSelector({
+//   cartItems: selectCartItems,
+//   checkoutTotal: selectCheckoutTotal,
+// });
 
-export default connect(mapStateToProps)(Checkout);
+// export default connect(mapStateToProps)(Checkout);
+
+export default Checkout;

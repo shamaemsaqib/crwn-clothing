@@ -13,7 +13,7 @@ export const addItemToCart = (item) => {
   };
 };
 
-export const remoteItemFromCart = (item) => {
+export const removeItemFromCart = (item) => {
   return {
     type: CART_ACTION_TYPES.REMOVE_ITEM_FROM_CART,
     payload: item,

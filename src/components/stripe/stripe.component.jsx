@@ -8,9 +8,9 @@ import { stripeAPIKey, svgUrl } from "../../utilities/stripe.utilities";
 function Stripe({ totalPrice }) {
   const priceInCents = totalPrice * 100;
   const onToken = (token) => {
-    console.log(token);
     alert("Payment Successful!");
   };
+
   return (
     <StripeCheckout
       name="CRWN Clothing Ltd."

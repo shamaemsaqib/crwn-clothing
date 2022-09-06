@@ -5,13 +5,15 @@ import { createStructuredSelector } from "reselect";
 import SectionPreviewWrapper from "./section-preview-wrapper.component";
 import WithSpinnerHOC from "../../components/withSpinnerHOC/withSpinnerHOC.component";
 
-import {
-  selectIsFetching,
-  selectSectionsForSectionsPreview,
-} from "../../redux/shop/shop.selectors";
+import { selectIsFetching } from "../../redux/shop/shop.selectors";
+
+//Old HOC Syntax
+// const mapStateToProps = createStructuredSelector({
+//   sections: selectSectionsForSectionsPreview,
+//   isLoading: selectIsFetching,
+// });
 
 const mapStateToProps = createStructuredSelector({
-  sections: selectSectionsForSectionsPreview,
   isLoading: selectIsFetching,
 });
 

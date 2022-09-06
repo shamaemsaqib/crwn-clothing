@@ -1,11 +1,11 @@
 import React from "react";
-
-import WithRouter from "../withRouterHOC/withRouterHOC.component";
+import { useNavigate } from "react-router-dom";
 
 import "./section-card.styles.scss";
 
-function SectionCard({ section, navigate }) {
+function SectionCard({ section }) {
   const { title, imageUrl, size, linkUrl } = section;
+  const navigate = useNavigate();
   return (
     <div
       className={`section-card ${size}`}
@@ -23,4 +23,5 @@ function SectionCard({ section, navigate }) {
   );
 }
 
-export default WithRouter(SectionCard);
+// export default WithRouter(SectionCard);
+export default SectionCard;
