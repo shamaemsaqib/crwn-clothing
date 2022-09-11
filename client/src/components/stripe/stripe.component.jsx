@@ -1,5 +1,6 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
 
 import "./stripe.styles.scss";
 
@@ -8,7 +9,18 @@ import { stripeAPIKey, svgUrl } from "../../utilities/stripe.utilities";
 function Stripe({ totalPrice }) {
   const priceInCents = totalPrice * 100;
   const onToken = (token) => {
-    alert("Payment Successful!");
+    axios
+      .post("payment", {
+        amount: priceInCents,
+        token,
+      })
+      .then((res) => alert("Payment Successful"))
+      .catch((error) => {
+        console.error("Payment Unsuccessful", error);
+        alert(
+          "ERROR: Payment Unsuccessful\nMake sure you use the given credit card for payment"
+        );
+      });
   };
 
   return (
