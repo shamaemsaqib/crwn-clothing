@@ -19,10 +19,19 @@
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
     align-items: flex-start;
 
+    & .input-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
     & .btns-container {
+      margin-top: 2rem;
       width: 100%;
       display: flex;
       justify-content: space-between;

@@ -65,16 +65,12 @@ export const addProfileDocumentToFirestore = async (authUser, otherData) => {
 };
 
 export const addShopToFireStore = async (collectionKey, sectionsToAdd) => {
-  console.log(sectionsToAdd);
-
   const collectionRef = collection(firestore, collectionKey);
-  console.log(collectionRef);
 
   const batch = writeBatch(firestore);
 
   sectionsToAdd.forEach((section) => {
     const { title, items } = section;
-    console.log(section);
     const newDocRef = doc(collectionRef);
     batch.set(newDocRef, { title: title, items: items });
   });

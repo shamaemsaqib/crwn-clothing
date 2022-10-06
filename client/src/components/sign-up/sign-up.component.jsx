@@ -17,14 +17,18 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    errMsg: "",
   });
-  const { displayName, email, password, confirmPassword } = state;
+  const { displayName, email, password, confirmPassword, errMsg } = state;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      setState({
+        ...state,
+        errMsg: "passwords do not match",
+      });
       return;
     }
 
@@ -42,9 +46,27 @@ const SignUp = () => {
         email: "",
         password: "",
         confirmPassword: "",
+        errMsg: "",
       });
     } catch (err) {
-      console.log(err);
+      switch (err.code) {
+        case "auth/weak-password":
+          setState({
+            ...state,
+            errMsg: "password should be min 6 characters long",
+          });
+          break;
+        case "auth/email-already-in-use":
+          setState({
+            ...state,
+            errMsg: "user with this email already exists",
+          });
+          break;
+
+        default:
+          console.log(err);
+          break;
+      }
     }
   };
 
@@ -60,49 +82,54 @@ const SignUp = () => {
         Sign up with your email and password
       </span>
       <form onSubmit={handleSubmit}>
-        <CustomFormInput
-          key={2}
-          handleChange={handleChange}
-          label="Display Name"
-          type="text"
-          name="displayName"
-          id="up-name"
-          value={displayName}
-          required
-        />
-        <CustomFormInput
-          key={3}
-          handleChange={handleChange}
-          label="Email"
-          type="email"
-          name="email"
-          value={email}
-          id="up-email"
-          required
-        />
-        <CustomFormInput
-          key={4}
-          handleChange={handleChange}
-          label="Password"
-          type="password"
-          name="password"
-          value={password}
-          id="up-pass"
-          required
-        />
-        <CustomFormInput
-          key={5}
-          handleChange={handleChange}
-          label="Confirm Password"
-          type="password"
-          name="confirmPassword"
-          value={confirmPassword}
-          id="up-cpass"
-          required
-        />
-        <CustomButton type="submit" onClick={handleSubmit}>
-          sign up
-        </CustomButton>
+        <div className="input-container">
+          <CustomFormInput
+            key={2}
+            handleChange={handleChange}
+            label="Display Name"
+            type="text"
+            name="displayName"
+            id="up-name"
+            value={displayName}
+            required
+          />
+          <CustomFormInput
+            key={3}
+            handleChange={handleChange}
+            label="Email"
+            type="email"
+            name="email"
+            value={email}
+            id="up-email"
+            required
+          />
+          <CustomFormInput
+            key={4}
+            handleChange={handleChange}
+            label="Password"
+            type="password"
+            name="password"
+            value={password}
+            id="up-pass"
+            required
+          />
+          <CustomFormInput
+            key={5}
+            handleChange={handleChange}
+            label="Confirm Password"
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            id="up-cpass"
+            required
+          />
+        </div>
+        {errMsg ? <p className="error">{errMsg}</p> : null}
+        <div className="btns-container">
+          <CustomButton type="submit" onClick={handleSubmit}>
+            sign up
+          </CustomButton>
+        </div>
       </form>
     </div>
   );

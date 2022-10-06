@@ -5,4 +5,13 @@
   gap: 4rem;
   justify-content: center;
   padding-top: 1rem;
+
+  & .error {
+    color: rgb(235, 1, 1);
+    font-size: 0.8rem;
+  }
+
+  & .error::before {
+    content: "* ";
+  }
 }

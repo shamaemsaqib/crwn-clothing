@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import "./App.css";
 
 import Header from "./components/header/header.component";
-import Register from "./pages/register/register.component";
-import SectionsList from "./pages/sections-list/sections-list.component";
-import Shop from "./pages/shop/shop.component";
-import Checkout from "./pages/checkout/checkout.component";
-import SectionContainer from "./pages/section/section.container";
-import SectionPreviewWrapperContainer from "./pages/section-preview-wrapper/section-preview-wrapper.container";
+import Register from "./routes/register/register.component";
+import SectionsList from "./routes/sections-list/sections-list.component";
+import Shop from "./routes/shop/shop.component";
+import Checkout from "./routes/checkout/checkout.component";
+import SectionContainer from "./routes/section/section.container";
+import SectionPreviewWrapperContainer from "./routes/section-preview-wrapper/section-preview-wrapper.container";
 
 import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
 
