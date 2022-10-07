@@ -1,17 +1,17 @@
 import React from "react";
 
-import "./register.styles.scss";
+import "./auth.styles.scss";
 
 import SignIn from "../../components/sign-in/sign-in.component";
 import SignUp from "../../components/sign-up/sign-up.component";
 
-function Register(props) {
+function Auth(props) {
   return (
-    <div className="register-container">
+    <div className="auth-container">
       <SignIn />
       <SignUp />
     </div>
   );
 }
 
-export default Register;
+export default Auth;

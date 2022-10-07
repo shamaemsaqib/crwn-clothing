@@ -40,7 +40,7 @@ function Header() {
             <p className="user-name">{currentUser.displayName}</p>
           </div>
         ) : (
-          <Link to={"/sign-in"} className="header-link">
+          <Link to={"/auth"} className="header-link">
             <p>sign in</p>
           </Link>
         )}

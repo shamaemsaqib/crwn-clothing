@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./sections-list.styles.scss";
+import "./home.styles.scss";
 
 import Directory from "../../components/directory/directory.component";
 
-function SectionsList() {
+function Home() {
   return (
     <div className="sections-list">
       <Directory />
@@ -12,4 +12,4 @@ function SectionsList() {
   );
 }
 
-export default SectionsList;
+export default Home;

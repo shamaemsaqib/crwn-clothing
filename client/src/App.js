@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import "./App.css";
 
 import Header from "./components/header/header.component";
-import Register from "./routes/register/register.component";
-import SectionsList from "./routes/sections-list/sections-list.component";
+import Home from "./routes/home/home.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import SectionContainer from "./routes/section/section.container";
@@ -18,6 +17,7 @@ import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { useEffect } from "react";
+import Auth from "./routes/auth/auth.component";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const App = () => {
     <div className="app">
       <Header />
       <Routes>
-        <Route exact path="/" element={<SectionsList />} />
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/shop" element={<Shop />}>
           <Route
             exact
@@ -81,8 +81,8 @@ const App = () => {
         <Route exact path="/checkout" element={<Checkout />} />
         <Route
           exact
-          path="/sign-in"
-          element={currentUser ? <Navigate to="/" /> : <Register />}
+          path="/auth"
+          element={currentUser ? <Navigate to="/" /> : <Auth />}
         />
       </Routes>
     </div>
