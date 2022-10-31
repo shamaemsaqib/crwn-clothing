@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import CartIcon from "../cart-icon/cart-icon.component";
 
-import { auth } from "../../firebase/firebase.utils";
+import { signOutUser } from "../../firebase/firebase.utils";
 
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartDropdown } from "../../redux/cart/cart.selectors";
@@ -34,7 +34,7 @@ function Header() {
         </Link>
         {currentUser ? (
           <div className="header-link signed-in">
-            <button className="sign-out-btn" onClick={() => auth.signOut()}>
+            <button className="sign-out-btn" onClick={signOutUser}>
               sign out
             </button>
             <p className="user-name">{currentUser.displayName}</p>

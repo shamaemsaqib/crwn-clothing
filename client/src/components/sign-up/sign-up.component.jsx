@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import "./sign-up.styles.scss";
 
@@ -8,7 +7,7 @@ import CustomFormInput from "../custom-form-input/custom-form-input.component";
 
 import {
   addProfileDocumentToFirestore,
-  auth,
+  signUpWithEmail,
 } from "../../firebase/firebase.utils";
 
 const SignUp = () => {
@@ -33,11 +32,7 @@ const SignUp = () => {
     }
 
     try {
-      const { user } = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const { user } = await signUpWithEmail(email, password);
 
       await addProfileDocumentToFirestore(user, { displayName });
 

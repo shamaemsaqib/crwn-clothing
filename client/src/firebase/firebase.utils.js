@@ -1,6 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import {
   collection,
   doc,
@@ -9,11 +17,8 @@ import {
   setDoc,
   writeBatch,
 } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0
 const firebaseConfig = {
   apiKey: "AIzaSyAkSYLb1Ty4k8_hao3SVOx2Xou-oxibU-E",
   authDomain: "crwn-clothing-556e4.firebaseapp.com",
@@ -27,7 +32,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-export const auth = getAuth();
+// Firebase Authentication
+const auth = getAuth();
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
@@ -36,6 +42,19 @@ provider.setCustomParameters({
 
 export const signInWithGoogle = () => signInWithPopup(auth, provider);
 
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
+
+export const signInWithEmail = async (email, password) => {
+  await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signUpWithEmail = async (email, password) =>
+  await createUserWithEmailAndPassword(auth, email, password);
+
+export const signOutUser = () => signOut(auth);
+
+// Firebase Firestore
 export const firestore = getFirestore(firebaseApp);
 
 export const addProfileDocumentToFirestore = async (authUser, otherData) => {

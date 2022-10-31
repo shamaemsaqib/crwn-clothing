@@ -12,7 +12,10 @@ import Checkout from "./routes/checkout/checkout.component";
 import SectionContainer from "./routes/section/section.container";
 import SectionPreviewWrapperContainer from "./routes/section-preview-wrapper/section-preview-wrapper.container";
 
-import { addProfileDocumentToFirestore, auth } from "./firebase/firebase.utils";
+import {
+  addProfileDocumentToFirestore,
+  onAuthStateChangedListener,
+} from "./firebase/firebase.utils";
 
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
@@ -24,7 +27,7 @@ const App = () => {
   const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+    const unsubscribeFromAuth = onAuthStateChangedListener(async (user) => {
       if (user) {
         const userDocRef = await addProfileDocumentToFirestore(user);
 
@@ -40,7 +43,7 @@ const App = () => {
       }
     });
 
-    return () => unsubscribeFromAuth();
+    return unsubscribeFromAuth;
   }, [dispatch]);
 
   // componentDidMount() {
