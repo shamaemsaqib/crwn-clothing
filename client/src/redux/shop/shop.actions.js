@@ -1,9 +1,4 @@
-import { collection, getDocs, query } from "firebase/firestore";
-
-import {
-  convertQuerySnapShotToMap,
-  firestore,
-} from "../../firebase/firebase.utils";
+import { getSectionsFromFirestore } from "../../firebase/firebase.utils";
 
 import { SHOP_ACTION_TYPES } from "./shop-action-types.actions";
 
@@ -21,17 +16,12 @@ export const fetchSectionsFromFirestoreFailure = (error) => ({
   payload: error,
 });
 
-export const fetchSectionsFromFirestoreAsync = () => {
-  return (dispatch) => {
-    const sectionsColRef = collection(firestore, "sections");
-
-    dispatch(fetchSectionsFromFirestoreStart());
-
-    getDocs(query(sectionsColRef))
-      .then((snapShot) => {
-        const sectionsMap = convertQuerySnapShotToMap(snapShot);
-        dispatch(fetchSectionsFromFirestoreSuccess(sectionsMap));
-      })
-      .catch((err) => dispatch(err));
-  };
+export const fetchSectionsFromFirestoreAsync = () => async (dispatch) => {
+  dispatch(fetchSectionsFromFirestoreStart());
+  try {
+    const sectionsMap = await getSectionsFromFirestore();
+    dispatch(fetchSectionsFromFirestoreSuccess(sectionsMap));
+  } catch (error) {
+    dispatch(fetchSectionsFromFirestoreFailure(error));
+  }
 };

@@ -13,9 +13,11 @@ import {
   collection,
   doc,
   getDoc,
+  getDocs,
   getFirestore,
   setDoc,
   writeBatch,
+  query,
 } from "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0
@@ -55,7 +57,7 @@ export const signUpWithEmail = async (email, password) =>
 export const signOutUser = () => signOut(auth);
 
 // Firebase Firestore
-export const firestore = getFirestore(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 export const addProfileDocumentToFirestore = async (authUser, otherData) => {
   if (!authUser) return;
@@ -112,4 +114,15 @@ export const convertQuerySnapShotToMap = (snapShot) => {
     accumulator[section.title.toLowerCase()] = section;
     return accumulator;
   }, {});
+};
+
+export const getSectionsFromFirestore = async () => {
+  const sectionsColRef = collection(firestore, "sections");
+
+  return await getDocs(query(sectionsColRef))
+    .then((snapShot) => {
+      const sectionsMap = convertQuerySnapShotToMap(snapShot);
+      return sectionsMap;
+    })
+    .catch((err) => console.log(err));
 };
