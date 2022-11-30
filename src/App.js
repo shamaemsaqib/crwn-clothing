@@ -11,6 +11,8 @@ import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import SectionContainer from "./routes/section/section.container";
 import SectionPreviewWrapperContainer from "./routes/section-preview-wrapper/section-preview-wrapper.container";
+import PaymentSuccessful from "./routes/payment-successful/payment-succussful.component";
+import PaymentUnsuccessful from "./routes/payment-unsuccessful/payment-unsuccussful.component";
 
 import {
   addProfileDocumentToFirestore,
@@ -86,6 +88,16 @@ const App = () => {
           exact
           path="/auth"
           element={currentUser ? <Navigate to="/" /> : <Auth />}
+        />
+        <Route
+          exact
+          path="/payment-successful"
+          element={<PaymentSuccessful />}
+        />
+        <Route
+          exact
+          path="/payment-unsuccessful"
+          element={<PaymentUnsuccessful />}
         />
       </Routes>
     </div>
