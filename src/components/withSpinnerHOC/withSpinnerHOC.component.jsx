@@ -1,10 +1,10 @@
 import React from "react";
 
-import Spinner from "./spinner/spinner.component.jsx";
+import DottedSpinner from "./dotted-spinner/dotted-spinner.component.jsx";
 
 function WithSpinnerHOC(WrappedComponent) {
   function WithSpinner({ isLoading, ...otherProps }) {
-    return isLoading ? <Spinner /> : <WrappedComponent {...otherProps} />;
+    return isLoading ? <DottedSpinner /> : <WrappedComponent {...otherProps} />;
   }
 
   return WithSpinner;

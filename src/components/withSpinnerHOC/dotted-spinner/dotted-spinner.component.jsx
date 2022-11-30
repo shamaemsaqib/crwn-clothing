@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./spinner.styles.scss";
+import "./dotted-spinner.styles.scss";
 
-function Spinner() {
+function DottedSpinner() {
   return (
-    <div className="spinner-wrapper">
+    <div className="dotted-spinner-wrapper">
       <div className="lds-roller">
         <div></div>
         <div></div>
@@ -19,4 +19,4 @@ function Spinner() {
   );
 }
 
-export default Spinner;
+export default DottedSpinner;

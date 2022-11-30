@@ -6,16 +6,17 @@ function CustomButton({
   children,
   isGoogleButton,
   inverted,
+  isLoading,
   ...otherBtnProps
 }) {
   return (
     <button
       className={`${isGoogleButton ? "google-btn" : ""} ${
         inverted ? "inverted" : ""
-      } custom-btn`}
+      } ${isLoading ? "loading" : ""} custom-btn`}
       {...otherBtnProps}
     >
-      {children.toUpperCase()}
+      {isLoading ? <div className="btn-spinner" /> : children.toUpperCase()}
     </button>
   );
 }
