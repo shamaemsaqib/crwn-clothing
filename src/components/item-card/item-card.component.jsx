@@ -15,9 +15,7 @@ function ItemCard({ item }) {
     <div className="item-card">
       <div
         className="item-card-img"
-        style={{
-          backgroundImage: `url("/src/assets/women/Blue Tank Top.jpg")`,
-        }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
       <section className="item-card-info">
         <p className="info-name">{name.toUpperCase()}</p>
