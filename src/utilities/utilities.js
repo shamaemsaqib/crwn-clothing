@@ -19,7 +19,8 @@ export const sections = [
   },
   {
     title: "women",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    imageUrl:
+      "https://media.istockphoto.com/id/1208148708/photo/polka-dot-summer-brown-dress-suede-wedge-sandals-eco-straw-tote-bag-cosmetics-on-a-light.jpg?s=612x612&w=0&k=20&c=9Y135GYKHLlPotGIfynBbMPhXNbYeuDuFzreL_nfDE8=",
     size: "large",
     id: 4,
     linkUrl: "/shop/women",
